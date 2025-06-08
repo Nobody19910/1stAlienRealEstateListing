@@ -6,8 +6,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Replace with your Atlas connection string
-mongoose.connect('mongodb+srv://niiniinn86:password%40100mongodb@1stalienrealestate.8exjxgp.mongodb.net/?retryWrites=true&w=majority&appName=1stAlienRealEstate');
+// Serve static files from the public folder
+app.use(express.static('public'));
+
+// Use environment variable for MongoDB URI
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://niiniinn86:password%40100mongodb@1stalienrealestate.8exjxgp.mongodb.net/?retryWrites=true&w=majority&appName=1stAlienRealEstate');
 
 // Define Listing schema and model
 const listingSchema = new mongoose.Schema({
@@ -32,6 +35,11 @@ app.post('/api/listings', async (req, res) => {
   res.json(listing);
 });
 
-// Start the server
-const PORT = 5000;
+// Catch-all route to serve frontend
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
+// Use environment variable for port (Render sets PORT)
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
