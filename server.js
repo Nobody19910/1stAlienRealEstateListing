@@ -1,16 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // Serve static files from the public folder
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Use environment variable for MongoDB URI
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://niiniinn86:password%40100mongodb@1stalienrealestate.8exjxgp.mongodb.net/?retryWrites=true&w=majority&appName=1stAlienRealEstate');
+// Use environment variable for MongoDB URI (recommended for Render)
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb+srv://niiniinn86:password%40100mongodb@1stalienrealestate.8exjxgp.mongodb.net/?retryWrites=true&w=majority&appName=1stAlienRealEstate'
+);
 
 // Define Listing schema and model
 const listingSchema = new mongoose.Schema({
@@ -35,9 +38,9 @@ app.post('/api/listings', async (req, res) => {
   res.json(listing);
 });
 
-// Catch-all route to serve frontend
+// Catch-all route to serve frontend (must be last)
 app.get('*', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Use environment variable for port (Render sets PORT)
