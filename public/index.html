@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1stAlien Real Estate</title>
+  <link rel="stylesheet" href="style.css" />
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
+ 
+
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">
+    <img src="image/alienlogo.png" alt="1st Alien Realestate Logo">
+  </a>
+
+    <!-- Nav Toggle (for mobile) -->
+    <div class="nav-toggle" onclick="toggleNav()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="navbar">
+      <a href="#home">Home</a>
+      <a href="#listings">Listings</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <video class="hero-bg-video" autoplay muted loop playsinline>
+  <source src="video/realestate.mp4" type="video/mp4">
+</video>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Find Your Dream Home</h1>
+      <p>Buy, rent, or sell properties with ease</p>
+    </div>
+    <div class="search-box-container">
+      <!-- Functional Search Form -->
+      <form class="search-box" onsubmit="searchListings(event)">
+        <input type="text" id="searchInput" placeholder="Search by location, price, or type..." />
+        <button type="submit"><i class='bx bx-search'></i></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Action Buttons -->
+  <section class="actions">
+    <button onclick="showListings()">Buy</button>
+    <button onclick="openForm('rent')">Rent</button>
+    <button onclick="openForm('sell')">Sell</button>
+  </section>
+
+  <!-- Listings Section -->
+  <section class="listings" id="listings">
+    <div id="listing-placeholder" class="listing-placeholder"></div>
+
+    <!-- Form Section -->
+
+<div id="form-container" class="form-container hidden">
+  <h2 id="form-title" class="form-title"></h2>
+  <form id="listing-form" onsubmit="addListing(event)">
+    <input id="listing-title" type="text" placeholder="Title" required>
+    <input id="listing-location" type="text" placeholder="Location" required>
+    <input id="listing-price" type="text" placeholder="Price" required>
+    <select id="listing-type" required>
+      <option value="">Select Type</option>
+      <option value="Rent">Rent</option>
+      <option value="Sell">Sell</option>
+      <option value="Buy">Buy</option>
+    </select>
+    <input id="listing-image" type="url" placeholder="Image URL (optional)">
+    <button type="submit">Add Listing</button>
+  </form>
+</div>
+
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <p>At 1stAlien Real Estate, we help you find, rent, or sell properties with ease.</p>
+      <p>Explore a wide range of listings tailored to your needs.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 1stAlien Real Estate</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
