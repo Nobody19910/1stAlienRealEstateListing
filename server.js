@@ -38,9 +38,9 @@ app.post('/api/listings', async (req, res) => {
   res.json(listing);
 });
 // Serve the index.html file for all other routes
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
-});
+});*/
 
 // Use environment variable for port (Render sets PORT)
 const PORT = process.env.PORT || 5000;
