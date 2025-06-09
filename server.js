@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Use environment variable for MongoDB URI (recommended for Render)
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb+srv://niiniinn86:password%40100mongodb@1stalienrealestate.8exjxgp.mongodb.net/?retryWrites=true&w=majority&appName=1stAlienRealEstate'
+  process.env.MONGODB_URI || 'mongodb+srv://niiniinn86:password%40100mongodb@cluster0.hlvqz98.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 );
 
 // Define Listing schema and model
