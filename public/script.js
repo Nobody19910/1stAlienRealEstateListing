@@ -2,6 +2,22 @@ const API_URL = '/api/listings';
 // Start with an empty listing database
 const listings = [];
 
+// ...existing code...
+window.onload = showListings;
+
+// Smooth scroll for navbar links
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.navbar a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href').slice(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+});
 // Display listings
 // Fetch and display listings from backend
 async function showListings() {
