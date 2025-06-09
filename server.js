@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files from the public folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 // Use environment variable for MongoDB URI (recommended for Render)
 mongoose.connect(
@@ -37,10 +37,9 @@ app.post('/api/listings', async (req, res) => {
   await listing.save();
   res.json(listing);
 });
-
-// Catch-all route to serve frontend (must be last)
+// Serve the index.html file for all other routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Use environment variable for port (Render sets PORT)
